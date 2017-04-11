@@ -1,2 +1,7 @@
+[package]
+name = "ironapp"
+version = "0.0.1"
+authors = ["Tim Howard <tim.howard@vgt.net>"]
+
 [dependencies]
 iron = "0.4.*"
