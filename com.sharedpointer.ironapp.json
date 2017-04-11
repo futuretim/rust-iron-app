@@ -1,0 +1,35 @@
+{
+    "app-id": "com.sharedpointer.ironapp",
+    "version": "master",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.6",
+    "sdk": "org.freedesktop.Sdk",
+    "sdk-extensions": [ "org.freedesktop.Sdk.Extension.rust" ],
+    "command": "ironapp",
+    "finish-args": ["--share=network", "--socket=x11", "--filesystem=host" ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {    
+            "V": "1"
+        },
+        "build-args": [ "--share=network" ]
+    },
+    "cleanup": ["/include", "/lib/*/include", "/lib/pkgconfig", "/share/pkgconfig", "/share/aclocal", "/man", "/share/man", "/share/info", "/share/gtk-doc", "*.la", "*.a" ],
+    "modules": [
+        {
+           "name": "ironapp",
+           "sources": [
+               {
+                   "type": "git",
+                   "url": "."
+               }
+           ],
+           "buildsystem": "simple",            
+           "build-commands": [ 
+               "/usr/lib/sdk/rust/install.sh", 
+               "source /usr/lib/sdk/rust/use.sh && cargo build && mkdir -p /app/bin && cp target/debug/ironapp /app/bin"
+            ] 
+        }
+    ]
+}
