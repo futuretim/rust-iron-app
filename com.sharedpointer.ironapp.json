@@ -10,7 +10,7 @@
     "build-options" : {
         "cflags": "-O2 -g",
         "cxxflags": "-O2 -g",
-        "env": {    
+        "env": {
             "V": "1"
         },
         "build-args": [ "--share=network" ]
@@ -22,14 +22,14 @@
            "sources": [
                {
                    "type": "git",
-                   "url": "."
+                   "url": "https://github.com/futuretim/rust-iron-app.git"
                }
            ],
-           "buildsystem": "simple",            
-           "build-commands": [ 
-               "/usr/lib/sdk/rust/install.sh", 
+           "buildsystem": "simple",
+           "build-commands": [
+               "/usr/lib/sdk/rust/install.sh",
                "source /usr/lib/sdk/rust/use.sh && cargo build && mkdir -p /app/bin && cp target/debug/ironapp /app/bin"
-            ] 
+            ]
         }
     ]
 }
